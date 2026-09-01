@@ -1,8 +1,5 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import shap
+import os
 
 # Page configuration
 st.set_page_config(
@@ -11,28 +8,18 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom Dark Theme Styling
-st.markdown("""
-    <style>
-    .main {
-        background-color: #0e1117;
-        color: #ffffff;
-    }
-    .stMetric {
-        background-color: #1e1e1e;
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #333333;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # Title and Overview
 st.title("☀️ Berlin Solar PV Power Forecasting")
 st.markdown("**Advanced Spatial & Physics-Informed Machine Learning Pipeline** for photovoltaic generation forecasting across Berlin grids.")
 
 st.sidebar.header("Navigation & Controls")
 section = st.sidebar.radio("Go to:", ["Model Performance", "SHAP Explainability", "Live Preview Data"])
+
+def safe_display_image(filename, caption):
+    if os.path.exists(filename):
+        st.image(filename, caption=caption, use_container_width=True)
+    else:
+        st.error(f"⚠️ Image file `{filename}` not found in the directory. Please check file names in repository.")
 
 if section == "Model Performance":
     st.subheader("📊 Comprehensive Model Performance Comparison")
@@ -44,16 +31,10 @@ if section == "Model Performance":
     
     st.markdown("---")
     st.subheader("Visual Evaluation Timeline")
-    try:
-        st.image("berlin_models_comparison_final.png", caption="Actual vs. Predicted Solar Generation (25-Hour Evolution)", use_column_width=True)
-    except FileNotFoundError:
-        st.warning("Image file `berlin_models_comparison_final.png` not found. Please ensure it's in the project directory.")
+    safe_display_image("berlin_models_comparison_final.png", "Actual vs. Predicted Solar Generation (25-Hour Evolution)")
         
     st.subheader("Animated Performance Tracking")
-    try:
-        st.image("berlin_models_comparison_animated.gif", caption="Dynamic Timeline Tracking", use_column_width=True)
-    except FileNotFoundError:
-        st.warning("Animated GIF file not found.")
+    safe_display_image("berlin_models_comparison_animated.gif", "Dynamic Timeline Tracking")
 
 elif section == "SHAP Explainability":
     st.subheader("🔬 Model Explainability & Interpretability (SHAP)")
@@ -63,17 +44,11 @@ elif section == "SHAP Explainability":
     
     with col1:
         st.markdown("**Global Feature Importance**")
-        try:
-            st.image("shap_feature_importance_bar.png", caption="Mean Absolute SHAP Values", use_column_width=True)
-        except FileNotFoundError:
-            st.warning("Bar plot image not found.")
+        safe_display_image("shap_feature_importance_bar.png", "Mean Absolute SHAP Values")
             
     with col2:
         st.markdown("**Directional Feature Impact**")
-        try:
-            st.image("shap_beeswarm.png", caption="SHAP Beeswarm Distribution", use_column_width=True)
-        except FileNotFoundError:
-            st.warning("Beeswarm plot image not found.")
+        safe_display_image("shap_beeswarm.png", "SHAP Beeswarm Distribution")
 
 elif section == "Live Preview Data":
     st.subheader("⚙️ Pipeline Architecture & Methodology")
