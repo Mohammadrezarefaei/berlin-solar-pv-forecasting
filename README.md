@@ -14,11 +14,11 @@ A high-performance, production-ready machine learning pipeline designed to forec
 
 ### Visual Performance Evaluation
 
-![Model Performance Comparison](berlin_models_comparison_final.png)
+![Model Performance Comparison](https://raw.githubusercontent.com/Mohammadrezarefaei/berlin-solar-pv-forecasting/main/berlin_models_comparison_final.png)
 
 *Comparison of actual photovoltaic generation against baseline, random forest, and regularized XGBoost models.*
 
-![Animated Evolution](berlin_models_comparison_animated.gif)
+![Animated Evolution](https://raw.githubusercontent.com/Mohammadrezarefaei/berlin-solar-pv-forecasting/main/berlin_models_comparison_animated.gif)
 
 *Dynamic 48-hour timeline tracking step-by-step model tracking and error minimization.*
 
@@ -41,10 +41,10 @@ To lift the "black-box" nature of gradient boosting, **SHAP (SHapley Additive ex
 
 ### SHAP Analysis Visualizations
 
-![SHAP Feature Importance](shap_feature_importance_bar.png)
+![SHAP Feature Importance](https://raw.githubusercontent.com/Mohammadrezarefaei/berlin-solar-pv-forecasting/main/shap_feature_importance_bar.png)
 *Global feature importance ranking via mean absolute SHAP values.*
 
-![SHAP Beeswarm Plot](shap_beeswarm.png)
+![SHAP Beeswarm Plot](https://raw.githubusercontent.com/Mohammadrezarefaei/berlin-solar-pv-forecasting/main/shap_beeswarm.png)
 *Directional feature impact and distribution across model predictions.*
 
 ---
@@ -57,4 +57,3 @@ To lift the "black-box" nature of gradient boosting, **SHAP (SHapley Additive ex
   * `berlin_models_comparison_animated.gif`
   * `shap_feature_importance_bar.png`
   * `shap_beeswarm.png`
-  
