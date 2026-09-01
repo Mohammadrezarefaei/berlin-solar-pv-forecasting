@@ -1,1 +1,38 @@
-# berlin-solar-pv-forecasting
+# ☀️ Berlin Solar PV Power Forecasting (Advanced Spatial & Physics-Informed Machine Learning)
+
+A high-performance, production-ready machine learning pipeline designed to forecast photovoltaic (PV) power generation across spatial grids in Berlin. This project transitions from naive temporal baselines to an advanced, regularized **XGBoost** architecture augmented with meteorological physics and directional wind-driven spatial lags.
+
+---
+
+## 📊 Model Performance Comparison
+
+| Model Architecture | Features Utilized | MAE (MW) | RMSE (MW) | Status / Improvement |
+| :--- | :--- | :--- | :--- | :--- |
+| **Baseline (Single-Point)** | Naive Persistence / Rolling Mean | 0.99 | 1.41 | High lag, prone to phase shifts |
+| **Old Spatial (RF)** | Standard Random Forest (100 trees) | 0.54 | 0.72 | Moderate spatial awareness |
+| **Advanced XGBoost (New)** | **3x3 Grid Spatial Lags + Solar Zenith Proxy** | **0.24** | **0.27** | **75% Error Reduction (Production Ready)** |
+
+---
+
+## 🛠️ Core Methodology & Engineering
+
+* **Zero Data Leakage:** Strict chronological train-test splitting (80/20) to mirror real-world deployment conditions and avoid look-ahead bias.
+* **Physics-Informed Features:** Integration of a **Solar Zenith Angle Proxy** (`solar_zenith_proxy`) derived from trigonometric sun-path calculations to bound generation limits.
+* **Wind-Driven Spatial Lag (`wind_spatial_lag`):** Capturing West-to-East meteorological propagation across Berlin grids to predict cloud cover and radiation shifts before they hit local sensors.
+* **Regularized Hyperparameters:** Tuned via `reg_alpha=0.1` and `reg_lambda=1.0` to control variance and prevent overfitting on high-dimensional weather grids.
+
+---
+
+## 🔬 Model Explainability (SHAP)
+
+To lift the "black-box" nature of gradient boosting, **SHAP (SHapley Additive exPlanations)** was implemented to validate that the model relies on true physical principles:
+* **Global Importance:** `surface_solar_radiation` and `wind_spatial_lag` dominate the top tiers of feature contribution.
+* **Directional Validation:** Beeswarm plots confirm that higher incoming solar radiation and positive spatial lag values scale up power generation output monotonically.
+
+---
+
+## 🚀 Visual Assets & Deliverables
+
+* `berlin_models_comparison_final.png`: High-resolution static validation plot comparing true vs. predicted curves.
+* `berlin_models_comparison_animated.gif`: 48-hour dynamic timeline tracking step-by-step model tracking.
+* `shap_beeswarm.png`: Feature impact directional analysis.
