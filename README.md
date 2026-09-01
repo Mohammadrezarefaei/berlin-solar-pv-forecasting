@@ -12,6 +12,16 @@ A high-performance, production-ready machine learning pipeline designed to forec
 | **Old Spatial (RF)** | Standard Random Forest (100 trees) | 0.54 | 0.72 | Moderate spatial awareness |
 | **Advanced XGBoost (New)** | **3x3 Grid Spatial Lags + Solar Zenith Proxy** | **0.24** | **0.27** | **75% Error Reduction (Production Ready)** |
 
+### Visual Performance Evaluation
+
+![Model Performance Comparison](berlin_models_comparison_final.png)
+
+*Comparison of actual photovoltaic generation against baseline, random forest, and regularized XGBoost models.*
+
+![Animated Evolution](berlin_models_comparison_animated.gif)
+
+*Dynamic 48-hour timeline tracking step-by-step model tracking and error minimization.*
+
 ---
 
 ## 🛠️ Core Methodology & Engineering
@@ -29,10 +39,22 @@ To lift the "black-box" nature of gradient boosting, **SHAP (SHapley Additive ex
 * **Global Importance:** `surface_solar_radiation` and `wind_spatial_lag` dominate the top tiers of feature contribution.
 * **Directional Validation:** Beeswarm plots confirm that higher incoming solar radiation and positive spatial lag values scale up power generation output monotonically.
 
+### SHAP Analysis Visualizations
+
+![SHAP Feature Importance](shap_feature_importance_bar.png)
+*Global feature importance ranking via mean absolute SHAP values.*
+
+![SHAP Beeswarm Plot](shap_beeswarm.png)
+*Directional feature impact and distribution across model predictions.*
+
 ---
 
-## 🚀 Visual Assets & Deliverables
+## 🚀 Repository Structure & Assets
 
-* `berlin_models_comparison_final.png`: High-resolution static validation plot comparing true vs. predicted curves.
-* `berlin_models_comparison_animated.gif`: 48-hour dynamic timeline tracking step-by-step model tracking.
-* `shap_beeswarm.png`: Feature impact directional analysis.
+* **Jupyter Notebook:** `berlin_solar_forecasting.ipynb`
+* **Visual Deliverables:**
+  * `berlin_models_comparison_final.png`
+  * `berlin_models_comparison_animated.gif`
+  * `shap_feature_importance_bar.png`
+  * `shap_beeswarm.png`
+  
