@@ -1,6 +1,12 @@
 # ☀️ Berlin Solar PV Power Forecasting (Advanced Spatial & Physics-Informed Machine Learning)
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://berlin-solar-pv-forecasting-ajffk5ttfnjklapdr4asak.streamlit.app/)
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A high-performance, production-ready machine learning pipeline designed to forecast photovoltaic (PV) power generation across spatial grids in Berlin. This project transitions from naive temporal baselines to an advanced, regularized **XGBoost** architecture augmented with meteorological physics and directional wind-driven spatial lags.
+
+👉 **Explore the Live Dashboard:** [Streamlit App](https://berlin-solar-pv-forecasting-ajffk5ttfnjklapdr4asak.streamlit.app/)
 
 ---
 
@@ -49,11 +55,27 @@ To lift the "black-box" nature of gradient boosting, **SHAP (SHapley Additive ex
 
 ---
 
-## 🚀 Repository Structure & Assets
+## 📁 Repository Structure
 
-* **Jupyter Notebook:** `berlin_solar_forecasting.ipynb`
-* **Visual Deliverables:**
-  * `berlin_models_comparison_final.png`
-  * `berlin_models_comparison_animated.gif`
-  * `shap_feature_importance_bar.png`
-  * `shap_beeswarm.png`
+```text
+berlin-solar-pv-forecasting/
+│
+├── .streamlit/
+│   └── config.toml
+│
+├── src/
+│   ├── __init__.py
+│   ├── model.py
+│   └── preprocessing.py
+│
+├── tests/
+│   ├── __init__.py
+│   └── test_pipeline.py
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── berlin_models_comparison_final.png
+├── berlin_models_comparison_animated.gif
+├── shap_feature_importance_bar.png
+└── shap_beeswarm.png
